@@ -35,10 +35,15 @@ spring:
             uri: mongodb://localhost:27017
             database: springDemo
     mail:
-        host: localhost
-        port: 25
-        username:
-        password:
+        host: smtp.gmail.com
+        port: 587
+        username: mtest3850@gmail.com
+        password: Test@123
+        smtp: 
+          auth: true
+          starttls:
+            enable: true
+        
     messages:
         cache-seconds: 1
     thymeleaf:
@@ -86,7 +91,7 @@ jhipster:
             # security key (this key should be unique for your application, and kept secret)
             key: 31edd7e0b6c822f4d34eab59c7820a1b522ec36e
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: springDemo@localhost
+        from: mtest3850@gmail.com
         base-url: http://127.0.0.1:8080
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
