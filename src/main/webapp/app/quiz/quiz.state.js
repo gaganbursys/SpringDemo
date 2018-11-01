@@ -49,6 +49,27 @@
                     return $translate.refresh();
                 }]
             }
+        })
+        .state('quiz-list', {
+            parent: 'admin',
+            url: '/quiz-list',
+            data: {
+                authorities: ['ROLE_ADMIN'],
+              //  pageTitle: 'configuration.title'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/quiz/quiz-list/quiz-list.html',
+                    controller: 'QuizListController',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                   // $translatePartialLoader.addPart('configuration');
+                    return $translate.refresh();
+                }]
+            }
         });
     }
 })();

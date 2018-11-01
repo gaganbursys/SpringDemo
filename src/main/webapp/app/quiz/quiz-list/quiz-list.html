@@ -1,0 +1,43 @@
+<div>
+    <h2 data-translate="">Quiz List</h2>
+
+     <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                 <th data-translate="">Category</th>
+                    <th data-translate="">Questions</th>
+                    <th data-translate="">Answer A</th>
+                    <th data-translate="">Answer B</th>
+                    <th data-translate="">Answer C</th>
+                    <th data-translate="">Answer D</th>
+                    <th data-translate="">Actions</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ques in vm.questions">
+              	  <td>{{ques.category}}</td>
+                    <td>{{ques.question}}</td>
+                    <td>{{ques.answerA}}</td>
+                    <td>{{ques.answerB}}</td>
+                    <td>{{ques.answerC}}</td>
+                    <td>{{ques.answerD}}</td>
+                    <td>
+                        <button type="button"
+                                class="btn btn-primary btn-sm"
+                                ng-click="vm.invalidate(session.series)" data-translate="">
+                                 Edit
+                        </button>
+                        <button type="button"
+                                class="btn btn-primary btn-sm"
+                                ng-click="vm.invalidate(session.series)" data-translate="">
+                                 Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

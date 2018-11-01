@@ -37,6 +37,12 @@
                                 <span data-translate="">Quiz Management</span>
                             </a>
                         </li>
+                          <li ui-sref-active="active" ng-switch-when="true">
+                            <a ui-sref="quiz-list" ng-click="vm.collapseNavbar()">
+                                <span class="glyphicon glyphicon-lock"></span>&nbsp;
+                                <span data-translate="">Quiz List</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li ng-class="{active: vm.$state.includes('account')}" uib-dropdown class="dropdown pointer">
