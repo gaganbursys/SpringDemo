@@ -1,15 +1,13 @@
 <div ng-cloak>
     <div class="row">
-        <div class="col-md-4">
-            <span class="hipster img-responsive img-rounded"></span>
+        <div class="col-md-2">
         </div>
         <div class="col-md-8">
-            <h1 data-translate="home.title">Welcome, Spring Demo</h1>
-            <p class="lead" data-translate="home.subtitle">homepage</p>
+            <h1 data-translate="">Welcome, Quiz Home</h1>
 
             <div ng-switch="vm.isAuthenticated()">
-                <div class="alert alert-success" ng-switch-when="true" data-translate="home.logged.message" translate-values="{username: '{{vm.account.login}}'}">
-                    You are logged in as user "{{vm.account.login}}".
+                <div class="alert alert-success" ng-switch-when="true" data-translate="" translate-values="{username: '{{vm.account.login}}'}">
+                    Welcome, "{{vm.account.login}}".
                 </div>
 
                 <div class="alert alert-warning" ng-switch-when="false" data-translate="global.messages.info.authenticated" translate-compile>
