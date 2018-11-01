@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="form-group col-sm-12 padNo">
-                    <label class="col-sm-3">Answer 1 :</label>
+                    <label class="col-sm-3">Answer A :</label>
                     <div class="col-sm-7">
                    		 <input type="text" class="form-control" id="answer1" name="answer1" placeholder="Enter Answer1"
                          	  ng-model="" ng-minlength=1 >
@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="form-group col-sm-12 padNo">
-                    <label class="col-sm-3">Answer 2 :</label>
+                    <label class="col-sm-3">Answer B :</label>
                     <div class="col-sm-7">
                    		 <input type="text" class="form-control" id="answer2" name="answer2" placeholder="Enter Answer2"
                          	  ng-model="" ng-minlength=1 >
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="form-group col-sm-12 padNo">
-                    <label class="col-sm-3">Answer 3 :</label>
+                    <label class="col-sm-3">Answer C :</label>
                     <div class="col-sm-7">
                    		 <input type="text" class="form-control" id="answer3" name="answer3" placeholder="Enter Answer3"
                          	  ng-model="" ng-minlength=1 >
@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="form-group col-sm-12 padNo">
-                    <label class="col-sm-3">Answer 4 :</label>
+                    <label class="col-sm-3">Answer D :</label>
                     <div class="col-sm-7">
                    		 <input type="text" class="form-control" id="answer4" name="answer4" placeholder="Enter Answer4"
                          	  ng-model="" ng-minlength=1 >
@@ -74,6 +74,16 @@
 	                            Answer4 is required.
 	                        </p>
 	                    </div> -->
+                    </div>
+                </div>
+                
+                 <div class="form-group col-sm-12 padNo">
+                    <label class="col-sm-3">Correct Answer :</label>
+                   <div class="col-sm-7">
+                   		 <select required id="correctAnswer" name="correctAnswer" class="form-control" ng-model="vm.correctAnswer" 
+                   		  ng-options="category.ans for category in vm.answerArr">
+                   		 <option value="" style="display: none;	">Select Answer</option>
+                   		  </select>
                     </div>
                 </div>
                 
