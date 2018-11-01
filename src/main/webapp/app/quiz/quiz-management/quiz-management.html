@@ -2,11 +2,20 @@
     <h2 data-translate="">Quiz Management</h2>
 
     <form name="form" role="form" novalidate ng-submit="vm.save()" show-validation>
-                 <div class="form-group col-sm-12 padNo" style="margin-top: 50px">
+    
+    <div class="form-group col-sm-12 padNo" style="margin-top: 50px">
+                    <label class="col-sm-3">Select Category :</label>
+                    <div class="col-sm-7">
+                   		 <select id="quesCategory" name="quesCategory" class="form-control" ng-model="vm.quesCategory" 
+                   		  ng-options="category.category for category in vm.quesCategoryArr"></select>
+                    </div>
+                </div>
+                
+                 <div class="form-group col-sm-12 padNo" >
                     <label class="col-sm-3">Question :</label>
                     <div class="col-sm-7">
-                   		 <input type="text" class="form-control" id="Question" name="Question" placeholder="Enter Question"
-                         	  ng-model="" ng-minlength=1 >
+                   		 <textarea type="text" height="300px" class="form-control" id="Question" name="Question" placeholder="Enter Question"
+                         	  ng-model="" ></textarea>
 	                    <!-- <div ng-show="form.question.$dirty && form.question.$invalid">
 	                        <p class="help-block"
 	                               ng-show="form.question.$error.required" data-translate="">
@@ -65,15 +74,6 @@
 	                            Answer4 is required.
 	                        </p>
 	                    </div> -->
-                    </div>
-                </div>
-                
-                
-                 <div class="form-group col-sm-12 padNo">
-                    <label class="col-sm-3">Select Category :</label>
-                    <div class="col-sm-7">
-                   		 <select id="quesCategory" name="quesCategory" class="form-control" ng-model="vm.quesCategory.category" 
-                   		  ng-options="category for category in vm.quesCategoryArr"></select>
                     </div>
                 </div>
                 
