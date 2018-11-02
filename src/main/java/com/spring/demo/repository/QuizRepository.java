@@ -1,5 +1,8 @@
 package com.spring.demo.repository;
 
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +13,8 @@ import com.spring.demo.domain.Quiz;
  */
 @Repository
 public interface QuizRepository extends MongoRepository<Quiz, String> {
+
+	Page<Quiz> findAll(Pageable pageable);
 
    
 }

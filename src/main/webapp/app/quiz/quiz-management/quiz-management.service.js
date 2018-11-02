@@ -5,9 +5,23 @@
         .module('springDemoApp')
         .factory('QuizManagementService', QuizManagementService);
 
-    QuizManagementService.$inject = ['$filter', '$http'];
+    QuizManagementService.$inject = ['$resource'];
 
-    function QuizManagementService ($filter, $http) {
-       
+    function QuizManagementService ($resource) {
+    	var service = $resource('api/quiz/:id', {}, {
+            'query': {method: 'GET', isArray: true},
+            'get': {
+                method: 'GET', isArray: false,
+                transformResponse: function (data) {
+                    data = angular.fromJson(data);
+                    return data;
+                }
+            },
+            'save': { method:'POST' },
+            'update': { method:'PUT' },
+            'delete':{ method:'DELETE'}
+            
+        });
+    	return service;
     }
 })();

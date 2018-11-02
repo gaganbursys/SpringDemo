@@ -31,7 +31,7 @@
         })
         .state('quiz-management', {
             parent: 'admin',
-            url: '/quiz-management',
+            url: '/quiz-management/:id',
             data: {
                 authorities: ['ROLE_ADMIN'],
               //  pageTitle: 'configuration.title'
@@ -64,7 +64,25 @@
                     controllerAs: 'vm'
                 }
             },
+            params: {
+                page: {
+                    value: '1',
+                    squash: true
+                },
+                sort: {
+                    value: 'id,asc',
+                    squash: true
+                }
+            },
             resolve: {
+            	 pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
+                     return {
+                         page: PaginationUtil.parsePage($stateParams.page),
+                         sort: $stateParams.sort,
+                         predicate: PaginationUtil.parsePredicate($stateParams.sort),
+                         ascending: PaginationUtil.parseAscending($stateParams.sort)
+                     };
+                 }],
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                    // $translatePartialLoader.addPart('configuration');
                     return $translate.refresh();

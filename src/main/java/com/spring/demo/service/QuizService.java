@@ -5,6 +5,8 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.spring.demo.domain.Quiz;
@@ -31,6 +33,24 @@ public class QuizService {
 		quizRepository.save(quiz);
 		quizDTO.setAnswerA("Question saved Successfully  !");
 		return quizDTO;
+	}
+	
+	public Page<Quiz> getAllQuizQuestions(Pageable pageable) {
+		
+		
+		return quizRepository.findAll(pageable);
+	}
+
+
+	public QuizDTO getQuizQuestionDetail(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public void deleteUser(String id) {
+		quizRepository.delete(id);
+		
 	}
 
 }

@@ -67,5 +67,8 @@
   },
   "scripts": {
     "test": "gulp test"
+  },
+  "dependencies": {
+    "angular-toastr": "^2.1.1"
   }
 }

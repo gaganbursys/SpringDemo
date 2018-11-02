@@ -22,7 +22,9 @@
               	console.log("response.CorrectAns");
               })
         }
-      
+        if(vm.id){
+			vm.quiz = QuizManagementService.get({id:vm.id});
+		}
         
     }
 })();
