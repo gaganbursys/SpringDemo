@@ -6,7 +6,7 @@
     <div class="form-group col-sm-12 padNo" style="margin-top: 50px">
                     <label class="col-sm-3">Select Category :</label>
                     <div class="col-sm-7">
-                   		 <select id="quesCategory" name="quesCategory" class="form-control" ng-model="vm.quesCategory" 
+                   		 <select id="quesCategory" name="quesCategory" class="form-control" ng-model="vm.quiz.category" 
                    		  ng-options="category.category for category in vm.quesCategoryArr"></select>
                     </div>
                 </div>
@@ -15,7 +15,7 @@
                     <label class="col-sm-3">Question :</label>
                     <div class="col-sm-7">
                    		 <textarea type="text" height="300px" class="form-control" id="Question" name="Question" placeholder="Enter Question"
-                         	  ng-model="" ></textarea>
+                         	  ng-model="vm.quiz.question" ></textarea>
 	                    <!-- <div ng-show="form.question.$dirty && form.question.$invalid">
 	                        <p class="help-block"
 	                               ng-show="form.question.$error.required" data-translate="">
@@ -28,7 +28,7 @@
                     <label class="col-sm-3">Answer A :</label>
                     <div class="col-sm-7">
                    		 <input type="text" class="form-control" id="answer1" name="answer1" placeholder="Enter Answer1"
-                         	  ng-model="" ng-minlength=1 >
+                         	  ng-model="vm.quiz.answerA" ng-minlength=1 >
 	                    <!-- div ng-show="form.answer1.$dirty && form.answer1.$invalid">
 	                        <p class="help-block"
 	                               ng-show="form.answer1.$error.required" data-translate="">
@@ -41,7 +41,7 @@
                     <label class="col-sm-3">Answer B :</label>
                     <div class="col-sm-7">
                    		 <input type="text" class="form-control" id="answer2" name="answer2" placeholder="Enter Answer2"
-                         	  ng-model="" ng-minlength=1 >
+                         	  ng-model="vm.quiz.answerB" ng-minlength=1 >
 	                   <!--  <div ng-show="form.answer2.$dirty && form.answer2.$invalid">
 	                        <p class="help-block"
 	                               ng-show="form.answer2.$error.required" data-translate="">
@@ -54,7 +54,7 @@
                     <label class="col-sm-3">Answer C :</label>
                     <div class="col-sm-7">
                    		 <input type="text" class="form-control" id="answer3" name="answer3" placeholder="Enter Answer3"
-                         	  ng-model="" ng-minlength=1 >
+                         	  ng-model="vm.quiz.answerC" ng-minlength=1 >
 	                    <!-- <div ng-show="form.answer3.$dirty && form.answer3.$invalid">
 	                        <p class="help-block"
 	                               ng-show="form.answer3.$error.required" data-translate="">
@@ -67,7 +67,7 @@
                     <label class="col-sm-3">Answer D :</label>
                     <div class="col-sm-7">
                    		 <input type="text" class="form-control" id="answer4" name="answer4" placeholder="Enter Answer4"
-                         	  ng-model="" ng-minlength=1 >
+                         	  ng-model="vm.quiz.answerD" ng-minlength=1 >
 	                   <!--  <div ng-show="form.answer4.$dirty && form.answer4.$invalid">
 	                        <p class="help-block"
 	                               ng-show="form.answer4.$error.required" data-translate="">
@@ -80,7 +80,7 @@
                  <div class="form-group col-sm-12 padNo">
                     <label class="col-sm-3">Correct Answer :</label>
                    <div class="col-sm-7">
-                   		 <select required id="correctAnswer" name="correctAnswer" class="form-control" ng-model="vm.correctAnswer" 
+                   		 <select required id="correctAnswer" name="correctAnswer" class="form-control" ng-model="vm.quiz.correctAns" 
                    		  ng-options="category.ans for category in vm.answerArr">
                    		 <option value="" style="display: none;	">Select Answer</option>
                    		  </select>
