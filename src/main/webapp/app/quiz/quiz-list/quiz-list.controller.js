@@ -46,8 +46,21 @@
             vm.totalItems = headers('X-Total-Count') - hiddenUsersSize;
             vm.queryCount = vm.totalItems;
             vm.page = pagingParams.page;
+        
+            
+            angular.forEach(data,function(list){
+    			if(list.category.toLowerCase()=="1"){
+    				list.categoryName ="Math";
+    			}else if(list.category.toLowerCase()=="2"){
+    				list.categoryName ="Java";
+    			}else if(list.category.toLowerCase()=="3"){
+    				list.categoryName ="GK";
+    			}
+    		});
             vm.quizList = data;
             vm.finalList = data;
+            
+            
             console.log(vm.quizList);
         }
         
@@ -105,21 +118,24 @@
         	}else if(id=="1"){
         		vm.quizList = [];
         		angular.forEach(vm.finalList,function(list){
-        			if(list.category.toLowerCase()=="math"){
+        			if(list.category.toLowerCase()=="1"){
+        				list.categoryName ="Math";
         				vm.quizList.push(list);
         			}
         		});
         	}else if(id=="2"){
         		vm.quizList = [];
         		angular.forEach(vm.finalList,function(list){
-        			if(list.category.toLowerCase()=="java"){
+        			if(list.category.toLowerCase()=="2"){
+        				list.categoryName ="Java";
         				vm.quizList.push(list);
         			}
         		});
         	}else if(id=="3"){
         		vm.quizList = [];
         		angular.forEach(vm.finalList,function(list){
-        			if(list.category.toLowerCase()=="gk"){
+        			if(list.category.toLowerCase()=="3"){
+        				list.categoryName ="GK";
         				vm.quizList.push(list);
         			}
         		});
