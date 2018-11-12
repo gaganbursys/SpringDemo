@@ -88,6 +88,46 @@
                     return $translate.refresh();
                 }]
             }
-        });
+        })
+        .state('quiz-page', {
+            parent: 'admin',
+            url: '/quiz-page',
+            data: {
+                authorities: ['ROLE_ADMIN'],
+              //  pageTitle: 'configuration.title'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'app/quiz/quiz-page/quiz-page.html',
+                    controller: 'QuizPageController',
+                    controllerAs: 'vm'
+                }
+            },
+            params: {
+                page: {
+                    value: '1',
+                    squash: true
+                },
+                sort: {
+                    value: 'id,asc',
+                    squash: true
+                },
+                student: null
+            },
+            resolve: {
+            	 pagingParams: ['$stateParams', 'PaginationUtil', function ($stateParams, PaginationUtil) {
+                     return {
+                         page: PaginationUtil.parsePage($stateParams.page),
+                         sort: $stateParams.sort,
+                         predicate: PaginationUtil.parsePredicate($stateParams.sort),
+                         ascending: PaginationUtil.parseAscending($stateParams.sort)
+                     };
+                 }],
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                   // $translatePartialLoader.addPart('configuration');
+                    return $translate.refresh();
+                }]
+            }
+        })
     }
 })();

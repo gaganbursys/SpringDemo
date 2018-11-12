@@ -3,12 +3,13 @@
 
     angular
         .module('springDemoApp')
-        .factory('QuizService', QuizService);
+        .factory('QuizPageService', QuizPageService);
 
-    QuizService.$inject = ['$resource'];
+    QuizPageService.$inject = ['$resource'];
 
-    function QuizService ($resource) {
-    	var service = $resource('api/student/:id', {}, {
+    function QuizPageService ($resource) {
+    	
+        var service = $resource('api/quiz/:id', {}, {
             'query': {method: 'GET', isArray: true},
             'get': {
                 method: 'GET', isArray: false,

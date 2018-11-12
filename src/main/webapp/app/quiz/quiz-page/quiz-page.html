@@ -1,0 +1,184 @@
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: gray;
+  padding: 3px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 5px;
+  font-size: 10px;
+  text-align: center;
+}
+</style>
+
+<div ng-if="!vm.testSubmitted">
+    
+    <!-- <div class="form-group col-sm-12 padNo"  style="margin-top: 30px;">
+                  <h2 class="col-sm-3">Time left :</h2>
+                  <span class="col-sm-4"></span>
+                  <label class="col-sm-2">Name :</label>
+                    <label class="col-sm-3">
+                    <span>{{vm.student.name}}</span></br>
+                    <span>{{vm.student.name}}</span></label>
+     </div> -->
+     
+     <div class="row">
+			<div class="col-sm-12">
+				<div class="form-group col-sm-8 "><h2 data-translate="">Time left : {{timeleft}}</h2></div>
+				<div class="form-group col-sm-4 padNo" style="margin-top: 30px">
+                    <label class="col-sm-12">Name : {{vm.student.name}}</label>
+                </div>
+             </div>
+             <div class="col-sm-12">
+				<div class="form-group col-sm-8 "></div>
+				<div class="form-group col-sm-4 padNo" >
+                    <label class="col-sm-12">Email : {{vm.student.email}}</label>
+                </div>
+             </div>
+     </div>
+     
+      <div class="row">
+			<div class="col-sm-8">
+				<div class="row">
+					<div class="col-sm-12">
+						<label class="col-sm-2">Question {{vm.quiz.id}}:</label>
+						<div class="form-group col-sm-10 padNo" >
+							<textarea  class="form-control" id="Question" name="Question" placeholder="Question"
+							  ng-model="vm.quiz.question" ></textarea>
+                		</div>
+               		 </div>
+                </div>
+                
+                <div class="row">
+					<div class="col-sm-12">
+					<label class="col-sm-12"> Answers :</label>
+					</div>
+				</div>
+                <div class="row">
+					<div class="col-sm-12">
+						<div class="form-group col-sm-12 padNo">
+							 <div class="col-sm-1"></div>
+							 <input class="col-sm-1" type="radio" ng-click="vm.updateAnswer('A')" name="radio">
+                   			 <label class="col-sm-10"> {{vm.quiz.answerA}}</label>
+                   			 
+               			 </div>
+               			 <div class="form-group col-sm-12 padNo">
+               			 	<div class="col-sm-1"></div>
+                   			  <input class="col-sm-1" type="radio" ng-click="vm.updateAnswer('B')" name="radio">
+                   			 <label class="col-sm-10"> {{vm.quiz.answerB}}</label>
+               			 </div>
+               			 <div class="form-group col-sm-12 padNo">
+               			 <div class="col-sm-1"></div>
+                   			<input class="col-sm-1" type="radio" ng-click="vm.updateAnswer('C')" name="radio">
+                   			 <label class="col-sm-10"> {{vm.quiz.answerC}}</label>
+               			 </div>
+               			 <div class="form-group col-sm-12 padNo">
+               			 <div class="col-sm-1"></div>
+                   			<input class="col-sm-1" type="radio" ng-click="vm.updateAnswer('D')" name="radio">
+                   			 <label class="col-sm-10"> {{vm.quiz.answerD}}</label>
+               			 </div>
+               			 <div class="form-group col-sm-12 padNo">
+               			 	<div class="col-sm-2">
+               			 		 <button type="button" class="btn btn-primary" ng-click="vm.getQuestion(vm.quiz.id-1)" ng-disabled="vm.quiz.id==1" data-translate="">Prev</button>
+               			 	</div>
+               			 	<div class="col-sm-8"></div>
+               			 	<div class="col-sm-2">
+               			 	<button type="button" class="btn btn-primary" ng-click="vm.getQuestion(vm.quiz.id+1)" ng-disabled="vm.quiz.id==30" data-translate="">Next</button>
+               			 	</div>
+               			 </div>
+               		 </div>
+                </div>
+			</div>
+			
+			<div class="col-sm-1">
+			</div>
+			<div class="col-sm-3">
+				<div class="row">
+					<label>MATH :</label>
+					<div class="grid-container">
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==1 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(1)">1</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==2 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(2)">2</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==3 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(3)">3</div>  
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==4 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(4)">4</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==5 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(5)">5</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==6 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(6)">6</div>  
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==7 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(7)">7</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==8 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(8)">8</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==9 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(9)">9</div>  
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==10 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(10)">10</div>
+					</div>
+				</div>
+				<div class="row">
+				<label>JAVA :</label>
+					<div class="grid-container">
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==11 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(11)">11</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==12 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(12)">12</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==13 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(13)">13</div>  
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==14 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(14)">14</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==15 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(15)">15</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==16 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(16)">16</div>  
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==17 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(17)">17</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==18 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(18)">18</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==19 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(19)">19</div>  
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==20 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(20)">20</div>
+					</div>
+				</div>
+				<div class="row">
+				<label>GK :</label>
+					<div class="grid-container">
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==21 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(21)">21</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==22 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(22)">22</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==23 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(23)">23</div>  
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==24 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(24)">24</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==25 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(25)">25</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==26 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(26)">26</div>  
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==27 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(27)">27</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==28 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(28)">28</div>
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==29 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(29)">29</div>  
+					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==30 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(30)">30</div>
+					</div>
+				</div>
+			</div>
+	  </div>
+
+
+</div>
+
+
+<div ng-if="vm.testSubmitted">
+    
+    <!-- <div class="form-group col-sm-12 padNo"  style="margin-top: 30px;">
+                  <h2 class="col-sm-3">Time left :</h2>
+                  <span class="col-sm-4"></span>
+                  <label class="col-sm-2">Name :</label>
+                    <label class="col-sm-3">
+                    <span>{{vm.student.name}}</span></br>
+                    <span>{{vm.student.name}}</span></label>
+     </div> -->
+     
+     <div class="row">
+			<div class="col-sm-12">
+				<div class="form-group col-sm-8 "><h2 data-translate="">Time left : <b>{{timeleft}}</b></h2></div>
+				<div class="form-group col-sm-4 padNo" style="margin-top: 30px">
+                    <label class="col-sm-12">Name : {{vm.student.name}}</label>
+                </div>
+             </div>
+             <div class="col-sm-12">
+				<div class="form-group col-sm-8 "></div>
+				<div class="form-group col-sm-4 padNo" >
+                    <label class="col-sm-12">Email : {{vm.student.email}}</label>
+                </div>
+             </div>
+     </div>
+     
+     <div class="row">
+			<div class="col-sm-5">
+			</div>
+			<div class="col-sm-5">
+			<h2 data-translate="">Test Submitted :)</h2>
+			</div>
+	</div>
+</div>
