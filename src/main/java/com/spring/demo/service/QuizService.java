@@ -53,4 +53,11 @@ public class QuizService {
 		
 	}
 
+	public QuizDTO getQuiz(String id) {
+		QuizDTO quizDTO = new QuizDTO();
+		Quiz quiz = quizRepository.findOne(id);
+		BeanUtils.copyProperties(quiz,quizDTO);
+		return quizDTO;
+	}
+
 }

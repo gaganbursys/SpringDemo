@@ -11,7 +11,7 @@
     	var service = $resource('api/quiz/:id', {}, {
             'query': {method: 'GET', isArray: true},
             'get': {
-                method: 'GET', isArray: false,
+                method: 'GET', 
                 transformResponse: function (data) {
                     data = angular.fromJson(data);
                     return data;

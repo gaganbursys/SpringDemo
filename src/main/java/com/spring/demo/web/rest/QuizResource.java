@@ -64,6 +64,13 @@ public class QuizResource {
     }
     
     
+    @GetMapping("/quiz/{id}")
+    @Timed
+    public ResponseEntity<QuizDTO> getUser(@PathVariable String id) {
+    	QuizDTO page = quizService.getQuiz(id);
+        return new ResponseEntity<>(page, HttpStatus.OK);
+    }
+    
     /**
      * DELETE /users/:login : delete the "login" User.
      *

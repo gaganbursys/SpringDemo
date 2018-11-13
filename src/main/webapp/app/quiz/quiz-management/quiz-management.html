@@ -6,7 +6,7 @@
     <div class="form-group col-sm-12 padNo" style="margin-top: 50px">
                     <label class="col-sm-3">Select Category :</label>
                     <div class="col-sm-7">
-                   		 <select id="quesCategory" name="quesCategory" class="form-control" ng-model="vm.quiz.category" 
+                   		 <select id="quesCategory" name="quesCategory" class="form-control" ng-model="vm.category" 
                    		  ng-options="category.category for category in vm.quesCategoryArr"></select>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                  <div class="form-group col-sm-12 padNo">
                     <label class="col-sm-3">Correct Answer :</label>
                    <div class="col-sm-7">
-                   		 <select required id="correctAnswer" name="correctAnswer" class="form-control" ng-model="vm.quiz.correctAns" 
+                   		 <select required id="correctAnswer" name="correctAnswer" class="form-control" ng-model="vm.correctAns" 
                    		  ng-options="category.ans for category in vm.answerArr">
                    		 <option value="" style="display: none;	">Select Answer</option>
                    		  </select>
