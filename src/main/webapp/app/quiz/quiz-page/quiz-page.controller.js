@@ -58,7 +58,7 @@
 	    	   clearInterval(x);
 		         $scope.timeleft = "00:00";
 		         vm.student.result=[];
-		         vm.student.result=vm.result;
+		         vm.student.result=vm.finalList;
 		         update();
 		         vm.testSubmitted=true;
 	       }
@@ -115,14 +115,19 @@
 	    			}
 	    		});
 	            console.log("vm.mathList",vm.finalList);
-	            getQuestion(1);
+	            getQuestion(1,vm.quiz);
 	        }
 	        
-	        function getQuestion(id){
+	        function getQuestion(id,lastQues){
+	        	console.log("ID ::: ",id," Ques :: ",lastQues)
 	        	angular.forEach(vm.finalList,function(ques){
+	        		if(lastQues.id==ques.id && lastQues.current && !lastQues.answered){
+	        			ques.current= false;
+	        			ques.visited = true;
+	        		}
 	        		if(ques.id==id){
+	        			ques.current = true;
 	        			vm.quiz = ques;
-	        			vm.quiz.current= true;
 	        		}
 	        	});
 	        	console.log("Id ",id);
@@ -133,11 +138,38 @@
 	             vm.rd4 = false;
 	        }
 	        
+	        vm.getBackgroud= function(id){  
+	           var obj ={};
+	           
+	           angular.forEach(vm.finalList,function(ques){
+	        	   
+	        		if(ques.id==id){
+	        			if(ques.current)
+		           			obj.background='yellow';
+	        			else if(ques.visited)
+		        	   		obj.background='red';
+	        			else if(ques.answered)
+	  	   					obj.background='#339933';
+	        			else
+	        				obj.background='rgba(255, 255, 255, 0.8)';
+	        		}
+	           });
+	           
+	           
+	            return obj;
+	         }
 	        
 	        vm.result=[];
-	        function updateAnswer(ans){
-	        	vm.quiz.selectedAns=ans;
-	        	vm.result.push(vm.quiz);
+	        function updateAnswer(ans,id){
+	        	angular.forEach(vm.finalList,function(ques){
+	        		if(ques.id==id){
+	        			ques.selectedAns=ans;
+	        			ques.answered = true;
+	    	        	ques.visited = false;
+	    	        	ques.current = false;
+	        		}
+	        	});
+	        	
 	        }
 	        
 

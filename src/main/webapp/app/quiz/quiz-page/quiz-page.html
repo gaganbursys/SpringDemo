@@ -61,23 +61,23 @@
 					<div class="col-sm-12">
 						<div class="form-group col-sm-12 padNo">
 							 <div class="col-sm-1"></div>
-							 <input class="col-sm-1" type="radio" ng-click="vm.updateAnswer('A')" ng-model="vm.rd1" name="radio">
+							 <input class="col-sm-1" type="radio" ng-click="vm.updateAnswer('A',vm.quiz.id)" ng-model="vm.rd1" name="radio">
                    			 <label class="col-sm-10"> {{vm.quiz.answerA}}</label>
                    			 
                			 </div>
                			 <div class="form-group col-sm-12 padNo">
                			 	<div class="col-sm-1"></div>
-                   			  <input class="col-sm-1" type="radio" ng-click="vm.updateAnswer('B')" ng-model="vm.rd2" name="radio">
+                   			  <input class="col-sm-1" type="radio" ng-click="vm.updateAnswer('B',vm.quiz.id)" ng-model="vm.rd2" name="radio">
                    			 <label class="col-sm-10"> {{vm.quiz.answerB}}</label>
                			 </div>
                			 <div class="form-group col-sm-12 padNo">
                			 <div class="col-sm-1"></div>
-                   			<input class="col-sm-1" type="radio" ng-click="vm.updateAnswer('C')" ng-model="vm.rd3" name="radio">
+                   			<input class="col-sm-1" type="radio" ng-click="vm.updateAnswer('C',vm.quiz.id)" ng-model="vm.rd3" name="radio">
                    			 <label class="col-sm-10"> {{vm.quiz.answerC}}</label>
                			 </div>
                			 <div class="form-group col-sm-12 padNo">
                			 <div class="col-sm-1"></div>
-                   			<input class="col-sm-1" type="radio" ng-click="vm.updateAnswer('D')" ng-model="vm.rd4" name="radio">
+                   			<input class="col-sm-1" type="radio" ng-click="vm.updateAnswer('D',vm.quiz.id)" ng-model="vm.rd4" name="radio">
                    			 <label class="col-sm-10"> {{vm.quiz.answerD}}</label>
                			 </div>
                			 <div class="form-group col-sm-12 padNo">
@@ -99,46 +99,46 @@
 				<div class="row">
 					<label>MATH :</label>
 					<div class="grid-container">
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==1 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(1)">1</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==2 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(2)">2</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==3 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(3)">3</div>  
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==4 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(4)">4</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==5 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(5)">5</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==6 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(6)">6</div>  
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==7 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(7)">7</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==8 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(8)">8</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==9 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(9)">9</div>  
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==10 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(10)">10</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(1)" ng-click="vm.getQuestion(1,vm.quiz)">1</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(2)" ng-click="vm.getQuestion(2,vm.quiz)">2</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(3)" ng-click="vm.getQuestion(3,vm.quiz)">3</div>  
+					  <div class="grid-item" ng-style="vm.getBackgroud(4)" ng-click="vm.getQuestion(4,vm.quiz)">4</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(5)" ng-click="vm.getQuestion(5,vm.quiz)">5</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(6)" ng-click="vm.getQuestion(6,vm.quiz)">6</div>  
+					  <div class="grid-item" ng-style="vm.getBackgroud(7)" ng-click="vm.getQuestion(7,vm.quiz)">7</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(8)" ng-click="vm.getQuestion(8,vm.quiz)">8</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(9)" ng-click="vm.getQuestion(9,vm.quiz)">9</div>  
+					  <div class="grid-item" ng-style="vm.getBackgroud(10)" ng-click="vm.getQuestion(10,vm.quiz)">10</div>
 					</div>
 				</div>
 				<div class="row">
 				<label>JAVA :</label>
 					<div class="grid-container">
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==11 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(11)">11</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==12 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(12)">12</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==13 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(13)">13</div>  
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==14 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(14)">14</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==15 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(15)">15</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==16 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(16)">16</div>  
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==17 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(17)">17</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==18 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(18)">18</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==19 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(19)">19</div>  
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==20 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(20)">20</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(11)" ng-click="vm.getQuestion(11,vm.quiz)">11</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(12)" ng-click="vm.getQuestion(12,vm.quiz)">12</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(13)" ng-click="vm.getQuestion(13,vm.quiz)">13</div>  
+					  <div class="grid-item" ng-style="vm.getBackgroud(14)" ng-click="vm.getQuestion(14,vm.quiz)">14</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(15)" ng-click="vm.getQuestion(15,vm.quiz)">15</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(16)" ng-click="vm.getQuestion(16,vm.quiz)">16</div>  
+					  <div class="grid-item" ng-style="vm.getBackgroud(17)" ng-click="vm.getQuestion(17,vm.quiz)">17</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(18)" ng-click="vm.getQuestion(18,vm.quiz)">18</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(19)" ng-click="vm.getQuestion(19,vm.quiz)">19</div>  
+					  <div class="grid-item" ng-style="vm.getBackgroud(20)" ng-click="vm.getQuestion(20,vm.quiz)">20</div>
 					</div>
 				</div>
 				<div class="row">
 				<label>GK :</label>
 					<div class="grid-container">
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==21 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(21)">21</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==22 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(22)">22</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==23 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(23)">23</div>  
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==24 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(24)">24</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==25 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(25)">25</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==26 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(26)">26</div>  
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==27 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(27)">27</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==28 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(28)">28</div>
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==29 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(29)">29</div>  
-					  <div class="grid-item" ng-style="{ 'background-color' : (vm.quiz.id==30 && vm.quiz.current) ? '#339933' : ' rgba(255, 255, 255, 0.8)' }" ng-click="vm.getQuestion(30)">30</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(21)" ng-click="vm.getQuestion(21,vm.quiz)">21</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(22)" ng-click="vm.getQuestion(22,vm.quiz)">22</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(23)" ng-click="vm.getQuestion(23,vm.quiz)">23</div>  
+					  <div class="grid-item" ng-style="vm.getBackgroud(24)" ng-click="vm.getQuestion(24,vm.quiz)">24</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(25)" ng-click="vm.getQuestion(25,vm.quiz)">25</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(26)" ng-click="vm.getQuestion(26,vm.quiz)">26</div>  
+					  <div class="grid-item" ng-style="vm.getBackgroud(27)" ng-click="vm.getQuestion(27,vm.quiz)">27</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(28)" ng-click="vm.getQuestion(28,vm.quiz)">28</div>
+					  <div class="grid-item" ng-style="vm.getBackgroud(29)" ng-click="vm.getQuestion(29,vm.quiz)">29</div>  
+					  <div class="grid-item" ng-style="vm.getBackgroud(30)" ng-click="vm.getQuestion(30,vm.quiz)">30</div>
 					</div>
 				</div>
 			</div>
