@@ -13,6 +13,7 @@ public class QuizDTO {
     private String answerC;
     private String answerD;
     private String correctAns;
+    private String selectedAns;
 
     
     public QuizDTO() {
@@ -95,6 +96,14 @@ public class QuizDTO {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public String getSelectedAns() {
+		return selectedAns;
+	}
+
+	public void setSelectedAns(String selectedAns) {
+		this.selectedAns = selectedAns;
 	}
 
 }

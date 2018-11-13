@@ -13,7 +13,8 @@
         vm.save = save;
         
         function save () {
-        	QuizService.save(vm.student, onSaveSuccess, onSaveError);
+        	 $state.go('quiz-page', { student: vm.student });
+        	//QuizService.save(vm.student, onSaveSuccess, onSaveError);
             }
         
         function onSaveSuccess (result,headers) {

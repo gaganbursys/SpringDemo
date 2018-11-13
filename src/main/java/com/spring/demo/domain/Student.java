@@ -1,6 +1,7 @@
 package com.spring.demo.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * A DTO representing a user, with his authorities.
@@ -12,6 +13,7 @@ public class Student extends AbstractAuditingEntity implements Serializable {
 	private String name;
     private String email;
     private String mno;
+    private List<Quiz> result;
 	public String getId() {
 		return id;
 	}
@@ -37,7 +39,12 @@ public class Student extends AbstractAuditingEntity implements Serializable {
 		this.mno = mno;
 	}
 
-
+	public List<Quiz> getResult() {
+		return result;
+	}
+	public void setResult(List<Quiz> result) {
+		this.result = result;
+	}
    
 
 }

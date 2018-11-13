@@ -5,9 +5,9 @@
         .module('springDemoApp')
         .controller('QuizPageController', QuizPageController);
 
-    QuizPageController.$inject = ['$filter','QuizPageService','$state','$stateParams','$scope','QuizListService','ParseLinks','pagingParams','AlertService','paginationConstants'];
+    QuizPageController.$inject = ['$filter','QuizPageService','$state','$stateParams','$scope','QuizListService','ParseLinks','pagingParams','AlertService','paginationConstants','QuizService'];
 
-    function QuizPageController ($filter,QuizPageService,$state,$stateParams,$scope,QuizListService,ParseLinks,pagingParams,AlertService,paginationConstants) {
+    function QuizPageController ($filter,QuizPageService,$state,$stateParams,$scope,QuizListService,ParseLinks,pagingParams,AlertService,paginationConstants,QuizService) {
         var vm = this;
         vm.student = $stateParams.student;
         vm.testSubmitted=false;
@@ -25,10 +25,29 @@
         vm.itemsPerPage = paginationConstants.itemsPerPage;
         vm.transition = transition;
         vm.getQuestion=getQuestion;
+        vm.updateAnswer=updateAnswer;
         vm.quiz={};
+        vm.update = update;
+        
+        vm.rd1 = false;
+        vm.rd2 = false;
+        vm.rd3 = false;
+        vm.rd4 = false;
+        
+        function update () {
+        	console.log("inupdate  ",vm.student )
+        	QuizService.update(vm.student, onSaveSuccess, onSaveError);
+            }
+        
+        function onSaveSuccess (result,headers) {
+            console.log(result);
+        }
+
+        function onSaveError () {
+        }
         console.log("vm.student  ",vm.student )
         loadAll();
-        var countDownDate = new Date(new Date().getTime() + 30*60000).getTime();
+        var countDownDate = new Date(new Date().getTime() + 1*10000).getTime();
 
 	     var x = setInterval(function() {
 	       var now = new Date().getTime();
@@ -38,6 +57,9 @@
 	       if((minutes=="0" && seconds=="0") || (minutes=="00" && seconds=="00")){
 	    	   clearInterval(x);
 		         $scope.timeleft = "00:00";
+		         vm.student.result=[];
+		         vm.student.result=vm.result;
+		         update();
 		         vm.testSubmitted=true;
 	       }
 	       $scope.timeleft=minutes + ":" +seconds; 
@@ -45,6 +67,9 @@
 	       if (distance < 0) {
 	         clearInterval(x);
 	         $scope.timeleft = "00:00";
+	        /* vm.student.result=[];
+	         vm.student.result=vm.result;
+	         update();*/
 	         vm.testSubmitted=true;
 	       }
 	     }, 1000);
@@ -102,7 +127,19 @@
 	        	});
 	        	console.log("Id ",id);
 	        	console.log("quiz ",vm.quiz);
+	        	 vm.rd1 = false;
+	             vm.rd2 = false;
+	             vm.rd3 = false;
+	             vm.rd4 = false;
 	        }
+	        
+	        
+	        vm.result=[];
+	        function updateAnswer(ans){
+	        	vm.quiz.selectedAns=ans;
+	        	vm.result.push(vm.quiz);
+	        }
+	        
 
 	        function onError(error) {
 	            AlertService.error(error.data.message);

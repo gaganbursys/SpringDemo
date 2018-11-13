@@ -18,6 +18,7 @@ public class Quiz extends AbstractAuditingEntity implements Serializable {
        private String answerC;
        private String answerD;
        private String correctAns;
+       private String selectedAns;
        
        
 	public String getId() {
@@ -69,6 +70,12 @@ public class Quiz extends AbstractAuditingEntity implements Serializable {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	public String getSelectedAns() {
+		return selectedAns;
+	}
 
-   
+	public void setSelectedAns(String selectedAns) {
+		this.selectedAns = selectedAns;
+	}
+	
 }

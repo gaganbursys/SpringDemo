@@ -35,6 +35,14 @@ public class StudentService {
 		return studentDTO;
 	}
 	
+	public StudentDTO updateStudent(StudentDTO studentDTO) {
+		Student student = new Student();
+		BeanUtils.copyProperties(studentDTO, student);
+		studentRepository.save(student);
+		//quizDTO.setAnswerA("Question saved Successfully  !");
+		return studentDTO;
+	}
+	
 	/*public Page<Quiz> getAllQuizQuestions(Pageable pageable) {
 		
 		

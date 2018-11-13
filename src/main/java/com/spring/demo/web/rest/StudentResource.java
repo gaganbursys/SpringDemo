@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,7 +51,14 @@ public class StudentResource {
     
     }
     
+    @PutMapping("/student")
+    @Timed
+    @Secured(AuthoritiesConstants.ADMIN)
+    public ResponseEntity<StudentDTO> updateStudent( @RequestBody StudentDTO studentDTO) throws URISyntaxException {
+        log.debug("REST request to update studentDTO : {}", studentDTO);
+        return new ResponseEntity<>(studentService.updateStudent(studentDTO),HttpStatus.OK);
     
+    }
  /*   *//**
      * GET /users : get all users.
      *

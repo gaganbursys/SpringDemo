@@ -1,5 +1,7 @@
 package com.spring.demo.service.dto;
 
+import java.util.List;
+
 /**
  * A DTO representing a user, with his authorities.
  */
@@ -9,6 +11,7 @@ public class StudentDTO {
 	private String name;
     private String email;
     private String mno;
+    private List<QuizDTO> result;
 	public String getId() {
 		return id;
 	}
@@ -32,6 +35,12 @@ public class StudentDTO {
 	}
 	public void setMno(String mno) {
 		this.mno = mno;
+	}
+	public List<QuizDTO> getResult() {
+		return result;
+	}
+	public void setResult(List<QuizDTO> result) {
+		this.result = result;
 	}
 
 
