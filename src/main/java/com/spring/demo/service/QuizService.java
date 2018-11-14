@@ -43,21 +43,23 @@ public class QuizService {
 
 
 	public QuizDTO getQuizQuestionDetail(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		Quiz quiz=quizRepository.findOne(id);
+		QuizDTO dto=new QuizDTO();
+		dto.setId(quiz.getId());
+		dto.setAnswerA(quiz.getAnswerA());
+		dto.setAnswerB(quiz.getAnswerB());
+		dto.setAnswerC(quiz.getAnswerC());
+		dto.setAnswerD(quiz.getAnswerD());
+		dto.setCategory(quiz.getCategory());
+		dto.setCorrectAns(quiz.getCorrectAns());
+		dto.setQuestion(quiz.getQuestion());
+		return dto;
 	}
 
 
 	public void deleteUser(String id) {
 		quizRepository.delete(id);
 		
-	}
-
-	public QuizDTO getQuiz(String id) {
-		QuizDTO quizDTO = new QuizDTO();
-		Quiz quiz = quizRepository.findOne(id);
-		BeanUtils.copyProperties(quiz,quizDTO);
-		return quizDTO;
 	}
 
 }

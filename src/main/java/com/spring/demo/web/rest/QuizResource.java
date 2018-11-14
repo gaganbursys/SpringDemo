@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codahale.metrics.annotation.Timed;
@@ -63,13 +65,16 @@ public class QuizResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
     
-    
-    @GetMapping("/quiz/{id}")
+    @RequestMapping(value = "/quiz/{id}",
+	method   = RequestMethod.GET,
+	produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public ResponseEntity<QuizDTO> getUser(@PathVariable String id) {
-    	QuizDTO page = quizService.getQuiz(id);
-        return new ResponseEntity<>(page, HttpStatus.OK);
+    public ResponseEntity<QuizDTO> getQuiz(@PathVariable String id) {
+        log.debug(":::ID::::", id);
+        QuizDTO dto = quizService.getQuizQuestionDetail(id);
+        return new ResponseEntity<>(dto,HttpStatus.OK);
     }
+    
     
     /**
      * DELETE /users/:login : delete the "login" User.
