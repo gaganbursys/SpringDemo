@@ -28,6 +28,10 @@
         vm.updateAnswer=updateAnswer;
         vm.quiz={};
         vm.update = update;
+        vm.box = [];
+        for(var i=1;i<31;i++){
+        	vm.box.push(i);
+        }
         
         vm.rd1 = false;
         vm.rd2 = false;
@@ -47,7 +51,7 @@
         }
         console.log("vm.student  ",vm.student )
         loadAll();
-        var countDownDate = new Date(new Date().getTime() + 1*10000).getTime();
+        var countDownDate = new Date(new Date().getTime() + 1*60000).getTime();
 
 	     var x = setInterval(function() {
 	       var now = new Date().getTime();
