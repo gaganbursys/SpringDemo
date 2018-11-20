@@ -61,23 +61,22 @@
 					<div class="col-sm-12">
 						<div class="form-group col-sm-12 padNo">
 							 <div class="col-sm-1"></div>
-							 <input class="col-sm-1" type="radio" ng-click="vm.updateAnswer('A',vm.quiz.id)" ng-model="vm.rd1" name="radio">
+							 <input class="col-sm-1" type="radio" ng-click="vm.updateAnswer(vm.quiz.id)" ng-model="vm.rd1" name="radio" ng-checked="vm.rd1==true">
                    			 <label class="col-sm-10"> {{vm.quiz.answerA}}</label>
-                   			 
                			 </div>
                			 <div class="form-group col-sm-12 padNo">
                			 	<div class="col-sm-1"></div>
-                   			  <input class="col-sm-1" type="radio" ng-click="vm.updateAnswer('B',vm.quiz.id)" ng-model="vm.rd2" name="radio">
+                   			  <input class="col-sm-1" type="radio" ng-click="vm.updateAnswer(vm.quiz.id)" ng-model="vm.rd2" name="radio" ng-checked="vm.rd2==true">
                    			 <label class="col-sm-10"> {{vm.quiz.answerB}}</label>
                			 </div>
                			 <div class="form-group col-sm-12 padNo">
                			 <div class="col-sm-1"></div>
-                   			<input class="col-sm-1" type="radio" ng-click="vm.updateAnswer('C',vm.quiz.id)" ng-model="vm.rd3" name="radio">
+                   			<input class="col-sm-1" type="radio" ng-click="vm.updateAnswer(vm.quiz.id)" ng-model="vm.rd3" name="radio" ng-checked="vm.rd3==true">
                    			 <label class="col-sm-10"> {{vm.quiz.answerC}}</label>
                			 </div>
                			 <div class="form-group col-sm-12 padNo">
                			 <div class="col-sm-1"></div>
-                   			<input class="col-sm-1" type="radio" ng-click="vm.updateAnswer('D',vm.quiz.id)" ng-model="vm.rd4" name="radio">
+                   			<input class="col-sm-1" type="radio" ng-click="vm.updateAnswer(vm.quiz.id)" ng-model="vm.rd4" name="radio" ng-checked="vm.rd4==true">
                    			 <label class="col-sm-10"> {{vm.quiz.answerD}}</label>
                			 </div>
                			 <div class="form-group col-sm-12 padNo">
@@ -93,39 +92,35 @@
                 </div>
 			</div>
 			
-			<div class="col-sm-1">
-			</div>
-			
+			<div class="col-sm-4">
 				<div class="row">
 					<label>MATH :</label>
 					<div class="grid-container">
-					<div ng-if="b<11" ng-repeat="b in vm.box">
-					<div class="grid-item" ng-style="vm.getBackgroud(b)" ng-click="vm.getQuestion(b,vm.quiz)">{{b}}</div>
+					<div ng-repeat="b in vm.finalList" ng-if="b.category==1">
+						<div class="grid-item" ng-style="vm.getBackgroud(b.id)" ng-click="vm.getQuestion(b.id,vm.quiz)">{{b.id}}</div>
 					</div>
-					
+					</div>
 				</div>
 				<div class="row">
 				<label>JAVA :</label>
 					<div class="grid-container">
-					<div ng-if="b>10 && b<21" ng-repeat="b in vm.box">
-					<div class="grid-item" ng-style="vm.getBackgroud(b)" ng-click="vm.getQuestion(b,vm.quiz)">{{b}}</div>
+					<div ng-repeat="b in vm.finalList" ng-if="b.category==2">
+						<div class="grid-item" ng-style="vm.getBackgroud(b.id)" ng-click="vm.getQuestion(b.id,vm.quiz)">{{b.id}}</div>
 					</div>
-					
+				</div>
 				</div>
 				<div class="row">
 				<label>GK :</label>
 					<div class="grid-container">
-					<div ng-if="b>20" ng-repeat="b in vm.box">
-					<div class="grid-item" ng-style="vm.getBackgroud(b)" ng-click="vm.getQuestion(b,vm.quiz)">{{b}}</div>
+					<div  ng-repeat="b in vm.finalList" ng-if="b.category==3">
+						<div class="grid-item" ng-style="vm.getBackgroud(b.id)" ng-click="vm.getQuestion(b.id,vm.quiz)">{{b.id}}</div>
 					</div>
 					
 				</div>
 			</div>
-	  </div>
-
-
+		</div>
+	</div>
 </div>
-
 
 <div ng-if="vm.testSubmitted">
     

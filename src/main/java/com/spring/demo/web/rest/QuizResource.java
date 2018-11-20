@@ -90,5 +90,4 @@ public class QuizResource {
         quizService.deleteUser(id);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "Deleted", id)).build();
     }
-    
 }

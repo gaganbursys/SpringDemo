@@ -29,9 +29,6 @@
         vm.quiz={};
         vm.update = update;
         vm.box = [];
-        for(var i=1;i<31;i++){
-        	vm.box.push(i);
-        }
         
         vm.rd1 = false;
         vm.rd2 = false;
@@ -41,7 +38,7 @@
         function update () {
         	console.log("inupdate  ",vm.student )
         	QuizService.update(vm.student, onSaveSuccess, onSaveError);
-            }
+         }
         
         function onSaveSuccess (result,headers) {
             console.log(result);
@@ -49,7 +46,6 @@
 
         function onSaveError () {
         }
-        console.log("vm.student  ",vm.student )
         loadAll();
         var countDownDate = new Date(new Date().getTime() + 1*60000).getTime();
 
@@ -97,77 +93,104 @@
 	            vm.page = pagingParams.page;
 	        
 	            var mathId=1;
-	            var javaId=11;
-	            var gkId=21;
-	            
+	            var javaId=2;
+	            var gkId=3;
+	          
 	            angular.forEach(data,function(ques){
 	    			if(ques.category.toLowerCase()=="1"){
 	    				ques.categoryName ="Math";
 	    				ques.id=mathId;
-	    				 vm.finalList.push(ques);
+	    				vm.mathList.push(ques);
 	    				mathId++;
 	    			}else if(ques.category.toLowerCase()=="2"){
 	    				ques.categoryName ="Java";
 	    				ques.id=javaId;
-	    				 vm.finalList.push(ques);
+	    				vm.javaList.push(ques);
 	    				javaId++;
 	    			}else if(ques.category.toLowerCase()=="3"){
 	    				ques.categoryName ="GK";
 	    				ques.id=gkId;
-	    				 vm.finalList.push(ques);
+	    				vm.gkList.push(ques);
 	    				gkId++;
 	    			}
 	    		});
-	            console.log("vm.mathList",vm.finalList);
+	            
+	            vm.finalList.push.apply(vm.finalList, vm.mathList);
+	            vm.finalList.push.apply(vm.finalList, vm.javaList);
+	            vm.finalList.push.apply(vm.finalList, vm.gkList);
+	            
+	            var num=1;
+	            angular.forEach(vm.finalList ,function(ques){
+	            	ques.id=num;
+	            	num++;
+	            });
 	            getQuestion(1,vm.quiz);
 	        }
 	        
 	        function getQuestion(id,lastQues){
-	        	console.log("ID ::: ",id," Ques :: ",lastQues)
+	        	
+	        	vm.rd1 = false;
+	        	vm.rd2 = false;
+	        	vm.rd3 = false;
+	        	vm.rd4 = false;
 	        	angular.forEach(vm.finalList,function(ques){
 	        		if(lastQues.id==ques.id && lastQues.current && !lastQues.answered){
 	        			ques.current= false;
 	        			ques.visited = true;
 	        		}
 	        		if(ques.id==id){
+	        			if(ques.selectedAns=="A"){
+	        				vm.rd1=true;
+	        			}
+	        			if(ques.selectedAns=="B"){
+	        				vm.rd2=true;
+	        			}
+	        			if(ques.selectedAns=="C"){
+	        				vm.rd3=true;
+	        			}
+	        			if(ques.selectedAns=="D"){
+	        				vm.rd4=true;
+	        			}
 	        			ques.current = true;
 	        			vm.quiz = ques;
 	        		}
 	        	});
-	        	console.log("Id ",id);
-	        	console.log("quiz ",vm.quiz);
-	        	 vm.rd1 = false;
-	             vm.rd2 = false;
-	             vm.rd3 = false;
-	             vm.rd4 = false;
 	        }
 	        
 	        vm.getBackgroud= function(id){  
 	           var obj ={};
 	           
 	           angular.forEach(vm.finalList,function(ques){
-	        	   
 	        		if(ques.id==id){
-	        			if(ques.current)
+	        			if(ques.current && ques.selectedAns==null)
 		           			obj.background='yellow';
-	        			else if(ques.visited)
+	        			else if(ques.visited && ques.selectedAns==null)
 		        	   		obj.background='red';
-	        			else if(ques.answered)
+	        			else if(ques.answered && ques.selectedAns!=null)
 	  	   					obj.background='#339933';
 	        			else
 	        				obj.background='rgba(255, 255, 255, 0.8)';
 	        		}
 	           });
-	           
-	           
 	            return obj;
 	         }
 	        
 	        vm.result=[];
-	        function updateAnswer(ans,id){
+	        function updateAnswer(id){
 	        	angular.forEach(vm.finalList,function(ques){
 	        		if(ques.id==id){
-	        			ques.selectedAns=ans;
+	        			if(vm.rd1==undefined){
+	        				ques.selectedAns="A";
+	        			}
+	        			if(vm.rd2==undefined){
+	        				ques.selectedAns="B";
+	        			}
+	        			if(vm.rd3==undefined){
+	        				ques.selectedAns="C";
+	        			}
+	        			if(vm.rd4==undefined){
+	        				ques.selectedAns="D";
+	        			}
 	        			ques.answered = true;
 	    	        	ques.visited = false;
 	    	        	ques.current = false;
